@@ -22,7 +22,6 @@ const listOfSquareIds = ["sqA", "sqB", "sqC", "sqD"];
 export default function Squares() {
   const [squareIds, getSquareIds] = useState(listOfSquareIds);
   const [activeSquares, setActiveSquares] = useState(listOfSquareIds);
-  console.log(squareIds);
   // Use the state hook twice, as we need two slices of state: 'squares' and
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square (if any).
@@ -34,7 +33,6 @@ export default function Squares() {
     // Right-click and "inspect element" on the square to see its effect.
     return id === activeSquares ? (squareIds.className = " active") : "";
   };
-  console.log(activeSquares);
 
   const markActive = (id) => {
     // This is a helper used inside an _inlined_ click handler. (See below)
