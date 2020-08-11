@@ -21,7 +21,7 @@ const listOfSquareIds = ["sqA", "sqB", "sqC", "sqD"];
 
 export default function Squares() {
   const [squareIds, getSquareIds] = useState(listOfSquareIds);
-  const [activeSquares, setActiveSquares] = useState(listOfSquareIds);
+  const [activeSquares, setActiveSquares] = useState(null);
   // Use the state hook twice, as we need two slices of state: 'squares' and
   // 'activeSquare'. One holds the _array_ of square ids, and the other keeps track
   // of the currently active square (if any).
@@ -39,9 +39,7 @@ export default function Squares() {
     // Set the id argument to be the active id in state
     // (unless it already is, in which case we should reset
     // the currently active square id back to initial state).
-    id !== activeSquares
-      ? setActiveSquares(id)
-      : setActiveSquares(listOfSquareIds);
+    id !== activeSquares ? setActiveSquares(id) : setActiveSquares(null);
   };
 
   return (
@@ -52,7 +50,7 @@ export default function Squares() {
           /* Nasty bug! We should map over a slice of state, instead of 'listOfSquareIds'.
           We might say: "it works, though!" But if the list of squares is not state,
           we could never add squares, change squares or remove squares in the future. Fix!" */
-          listOfSquareIds.map((id) => (
+          squareIds.map((id) => (
             <div
               id={id}
               key={id}
